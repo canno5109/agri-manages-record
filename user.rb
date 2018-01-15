@@ -27,21 +27,21 @@ post '/users' do
   json = JSON.parse(request.body.read.to_s)
   id = json['id']
 
+  def saveUser # DBに保存する関数
+    user = User.new(json)
+    if user.save
+      { :result => "success", :code => 200 }.to_json
+      status 200
+    else
+      { :result => "error", :code => 400, :message => "もう一度やり直してください" }.to_json
+      status 400
+    end
+  end
+
   if User.find_by(id: id)
     { :result => "error", :code => 400, :message => "IDが既に存在します" }.to_json
     status 400
-    exit;
-  end
-
-  # データ保存
-  user = User.new(json)
-  if user.save
-    { :result => "success", :code => 200 }.to_json
-    status 200
-    #{ result: "success", code: 200 }.to_json
   else
-    { :result => "error", :code => 400 }.to_json
-    status 400
-    #{ result: "failure", code: 400 }.to_json
+    saveUser()
   end
 end
