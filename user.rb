@@ -17,6 +17,10 @@ users = User.all$
 users.to_json(:root => false) # :root => false は json で返却した時に json の一番上のキーが user にならないようにする$
 end$
 
+get '/hoge' do
+  echo 'Hello World'
+end
+
 # 新規登録$
 post '/users' do$
 # リクエスト解析$
