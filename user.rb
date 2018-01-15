@@ -30,6 +30,7 @@ post '/users' do
   if User.find_by(id: id)
     { :result => "error", :code => 400, :message => "IDが既に存在します" }.to_json
     status 400
+    exit;
   end
 
   # データ保存
