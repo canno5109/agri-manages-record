@@ -1,23 +1,23 @@
-default: &default$
-  adapter: mysql2$
-  pool: 5$
-  timeout: 5000$
-  encoding: utf8$
-$
-# local PC$
-development:$
-  adapter: mysql2$
-  database: agri_record$
-  host: localhost$
-  username: testuser$
-  password: agrirecord$
-  encoding: utf8$
-  socket: '/Applications/MAMP/tmp/mysql/mysql.sock'$
-$
-# production server用$
-production:$
-  <<: *default$
-  database: agri_record$
-  host: localhost$
-  username: root$
+default: &default
+  adapter: mysql2
+  pool: 5
+  timeout: 5000
+  encoding: utf8
+
+# local PC
+development:
+  adapter: mysql2
+  database: agri_record
+  host: localhost
+  username: testuser
+  password: agrirecord
+  encoding: utf8
+  socket: '/Applications/MAMP/tmp/mysql/mysql.sock'
+
+# production server用
+production:
+  <<: *default
+  database: agri_record
+  host: localhost
+  username: root
   password: kansatunet
