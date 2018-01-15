@@ -22,7 +22,7 @@ get '/' do
 end
 
 # 新規登録
-post '/user' do
+post '/users' do
   # リクエスト解析
   json = JSON.parse(request.body.read.to_s)
 
