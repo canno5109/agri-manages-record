@@ -18,7 +18,7 @@ users.to_json(:root => false) # :root => false は json で返却した時に js
 end$
 
 get '/hoge' do
-  echo 'Hello World'
+  'Hello world!'
 end
 
 # 新規登録$
