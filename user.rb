@@ -12,9 +12,9 @@ end
 
 # 登録されているユーザーを取得
 get '/users' do
-content_type :json, :charset => 'utf-8'
-users = User.all
-users.to_json(:root => false) # :root => false は json で返却した時に json の一番上のキーが user にならないようにする
+  content_type :json, :charset => 'utf-8'
+  users = User.all
+  users.to_json(:root => false) # :root => false は json で返却した時に json の一番上のキーが user にならないようにする
 end
 
 get '/' do
@@ -27,21 +27,18 @@ post '/users' do
   json = JSON.parse(request.body.read.to_s)
   id = json['id']
 
-  def saveUser # DBに保存する関数
-    user = User.new(json)
-    if user.save
-      { :result => "success", :code => 200 }.to_json
-      status 200
-    else
-      { :result => "error", :code => 400, :message => "もう一度やり直してください" }.to_json
-      status 400
-    end
-  end
 
   if User.find_by(id: id)
-    { :result => "error", :code => 400, :message => "IDが既に存在します" }.to_json
     status 400
+    { :result => "error", :code => 400, :message => "IDが既に存在します" }.to_json
   else
-    saveUser()
+    user = User.new(json)
+    if user.save
+      status 200
+      { :result => "success", :code => 200 }.to_json
+    else
+      status 400
+      { :result => "error", :code => 400, :message => "もう一度やり直してください" }.to_json
+    end
   end
 end
