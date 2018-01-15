@@ -22,11 +22,11 @@ get '/' do
 end
 
 # 新規登録
-post '/users' do
-# リクエスト解析
-json = JSON.parse(request.body.read.to_s)
+post '/user' do
+  # リクエスト解析
+  json = JSON.parse(request.body.read.to_s)
 
-# データ保存
+  # データ保存
   user = User.new(json)
   if user.save
     { result: "success", code: 200 }.to_json
