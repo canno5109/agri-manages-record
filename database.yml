@@ -21,4 +21,4 @@ production:
   host: localhost
   username: root
   password: kansatunet
-  sockert: 'http://133.242.141.56//var/lib/mysql/mysql.sock'
+  socket: 'http://133.242.141.56/hoge/agri/var/lib/mysql/mysql.sock'
