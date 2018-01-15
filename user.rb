@@ -17,7 +17,7 @@ users = User.all$
 users.to_json(:root => false) # :root => false は json で返却した時に json の一番上のキーが user にならないようにする$
 end$
 
-get '/hoge' do
+get '/' do
   'Hello world!'
 end
 
@@ -27,7 +27,7 @@ post '/users' do$
 json = JSON.parse(request.body.read.to_s)$
 
 # データ保存$
-user = User.new(json)$
+  user = User.new(json)$
   if user.save$
     { result: "success", code: 200 }.to_json$
     status 200$
