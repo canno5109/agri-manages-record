@@ -25,16 +25,22 @@ end
 post '/users' do
   # リクエスト解析
   json = JSON.parse(request.body.read.to_s)
+  id = json['id']
+
+  if User.find_by(id: id)
+    { :result => "error", :code => 400, :message => "IDが既に存在します" }.to_json
+    status 400
+  end
 
   # データ保存
   user = User.new(json)
   if user.save
-    content_type :json
     { :result => "success", :code => 200 }.to_json
+    status 200
     #{ result: "success", code: 200 }.to_json
   else
-    content_type :json
-    { :result => "failure", :code => 400 }.to_json
+    { :result => "error", :code => 400 }.to_json
+    status 400
     #{ result: "failure", code: 400 }.to_json
   end
 end
