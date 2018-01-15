@@ -29,10 +29,6 @@ post '/records' do
   # リクエスト解析
   json = JSON.parse(request.body.read.to_s)
   user_id = json['user_id']
-  file = json['file'].read
-  filename = json['file'].original_filename
-  json['file'] = file
-  json['filename'] = filename
 
   if User.find_by(id: user_id)
     record = Record.new(json)
