@@ -1,2 +1,2 @@
-require './app_main'
+require './user'
 run Sinatra::Application
