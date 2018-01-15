@@ -27,16 +27,10 @@ end
 # 新規登録
 post '/records' do
   # リクエスト解析
-  puts "hello World!!!"
-
   json = JSON.parse(request.body.read.to_s)
   user_id = json['user_id']
   file = json['file'].read
   filename = json['file'].original_filename
-
-  puts file
-  puts json['file'].filename
-
   json['file'] = file
   json['filename'] = filename
 
