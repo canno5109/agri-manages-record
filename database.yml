@@ -19,6 +19,6 @@ production:
   <<: *default
   database: agri_record
   host: 133.242.141.56
-  username: root
+  username: agri_test
   password: kansatunet
   socket: '/var/lib/mysql/mysql.sock'
