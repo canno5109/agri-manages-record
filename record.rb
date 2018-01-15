@@ -28,7 +28,6 @@ end
 post '/records' do
   # リクエスト解析
   json = JSON.parse(request.body.read.to_s)
-  json['filename'] = json['file'].original_filename
   user_id = json['user_id']
 
   if User.find_by(id: user_id)
